@@ -7,6 +7,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "tb_movie")
@@ -23,4 +25,7 @@ public class Movie {
     private BigDecimal score;
     private Integer count;
     private String image;
+
+    @OneToMany(mappedBy = "scorePK.movie")
+    private Set<Score> scores = new HashSet<>();
 }
